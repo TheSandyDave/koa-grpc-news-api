@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server/index.js",
     "grpc_server": "node src/grpc-server/index.js",
-    "grpc_client": "node -r dotenv/config src/grpc-client/index.js"
+    "grpc_client": "npm install && node -r dotenv/config src/grpc-client/index.js"
   },
   "keywords": [],
   "author": "",
