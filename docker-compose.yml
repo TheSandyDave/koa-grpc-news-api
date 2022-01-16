@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: "mongo"
+  api:
+    build: 
+      context: ./
+      dockerfile: api.dockerfile
+    ports:
+      - "${API_PORT}:8080"
+    environment:
+      - MONGO_NAME=mongodb
+      - MONGO_PORT=${MONGO_PORT}
+      - API_PORT=8080
+  grpc:
+    build: 
+      context: ./
+      dockerfile: grpcserver.dockerfile
+
+    ports:
+      - "${GRPC_PORT}:40000"
+    environment:
+      - MONGO_NAME=mongodb
+      - MONGO_PORT=${MONGO_PORT}
+      - GRPC_PORT=40000

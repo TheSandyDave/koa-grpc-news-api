@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+service NewsService {
+    rpc Get(Id) returns (News) {}
+    rpc Create(News) returns (News) {}
+    rpc Update(News) returns (News) {}
+    rpc Delete(Id) returns (Empty) {}
+    rpc Query(QueryOpts) returns (NewsList) {}
+}
+
+message News {
+    int32 id = 1;
+    string title = 2;
+    string date = 3;
+    string description = 4;
+    string text = 5;
+}
+
+message Id {
+    int32 id = 1;
+}
+
+message Empty {
+
+}
+message QueryOpts {
+    repeated string sortFields = 1;
+    string title = 2;
+    string dateValue = 3;
+    string dateOperator = 4;
+}
+
+message NewsList {
+    repeated News news = 1;
+}
